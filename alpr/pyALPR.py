@@ -8,8 +8,8 @@ class PlateReader:
         self.webcam_command_args = shlex.split(webcam_command)
 
         # alpr subprocess args
-        # alpr_command = "alpr -c eu -t hr -n 300 -j alpr.jpg"
-        alpr_command = "alpr -c au -p nsw -n 10 -j alpr.jpg"
+        alpr_command = "alpr -c eu -t hr -n 300 -j alpr.jpg"
+        # alpr_command = "alpr -c au -p nsw -n 10 -j alpr.jpg"
         self.alpr_command_args = shlex.split(alpr_command)
 
 
@@ -48,16 +48,18 @@ class PlateReader:
 
         results = alpr_json["results"]
 
-        ordinal = 0
+        # ordinal = 0
         for result in results:
             candidates = result["candidates"]
 
             for candidate in candidates:
-                if candidate["matches_template"] == 1:
-                    ordinal += 1
-                    with open("jieguo.txt", "w") as f:
-                        f.write("Guess {0:d}: {1:s} {2:.2f}%".format(ordinal, candidate["plate"], candidate["confidence"]))
-                    print ("Guess {0:d}: {1:s} {2:.2f}%".format(ordinal, candidate["plate"], candidate["confidence"]))
+                # ordinal += 1
+                prefix = "-"
+                if candidate['matches_template']:
+                    prefix = "*"
+                with open("jieguo.txt", "w") as f:
+                    f.write("Guess {0:d}: {1:s} {2:.2f}%".format(prefix, candidate["plate"], candidate["confidence"]))
+                print ("Guess {0:d}: {1:s} {2:.2f}%".format(prefix, candidate["plate"], candidate["confidence"]))
 
 
 if __name__=="__main__":
