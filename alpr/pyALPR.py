@@ -1,6 +1,7 @@
 import json, shlex, subprocess
 
 class PlateReader:
+
     def __init__(self):
         #webcam subprocess args
         webcam_command = "fswebcam -r 640x480 -S 20 --no-banner --quiet alpr.jpg"
@@ -14,7 +15,6 @@ class PlateReader:
 
     def webcam_subprocess(self):
         return subprocess.Popen(self.webcam_command_args, stdout=subprocess.PIPE)
-
 
     def alpr_subprocess(self):
         return subprocess.Popen(self.alpr_command_args, stdout=subprocess.PIPE)
