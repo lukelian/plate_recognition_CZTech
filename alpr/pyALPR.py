@@ -48,18 +48,19 @@ class PlateReader:
 
         results = alpr_json["results"]
 
-        # ordinal = 0
+        ordinal = 0
         for result in results:
             candidates = result["candidates"]
 
             for candidate in candidates:
-                # ordinal += 1
+                ordinal += 1
                 prefix = "-"
                 if candidate['matches_template']:
                     prefix = "*"
                 with open("jieguo.txt", "w") as f:
-                    f.write("Guess {0:d}: {1:s} {2:.2f}%".format(prefix, candidate["plate"], candidate["confidence"]))
-                print ("Guess {0:d}: {1:s} {2:.2f}%".format(prefix, candidate["plate"], candidate["confidence"]))
+                    f.write("Guess {0:d}: {1:s} {2:.2f}%".format(ordinal, candidate["plate"], candidate["confidence"]))
+                print("  %s %12s%12f" % (prefix, candidate['plate'], candidate['confidence']))
+                # print ("Guess {0:d}: {1:s} {2:.2f}%".format(ordinal, candidate["plate"], candidate["confidence"]))
 
 
 if __name__=="__main__":
