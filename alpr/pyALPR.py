@@ -74,7 +74,7 @@ class PlateReader:
 
         alpr.set_top_n(20)
         alpr.set_default_region("md")
-        results = alpr.recognize_file("us-1.jpg")
+        results = alpr.recognize_file("alpr.jpg")
         i = 0
         for plate in results['results']:
             i += 1
