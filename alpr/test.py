@@ -1,7 +1,7 @@
 from openalpr import Alpr
 import sys
 
-alpr = Alpr("us", "/home/lukelian/plate_recognition_CZTech/openalpr.conf", "/home/lukelian/plate_recognition_CZTech/runtime_data")
+alpr = Alpr("us", "/home/pi/lukelian/plate_recognition_CZTech/openalpr.conf", "/home/pi/lukelian/plate_recognition_CZTech/runtime_data")
 if not alpr.is_loaded():
     print("Error loading OpenALPR")
     sys.exit(1)
