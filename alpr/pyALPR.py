@@ -66,15 +66,15 @@ class PlateReader:
 
     def read_plate_py(self):
         self.webcam_subprocess().communicate()
-        alpr = Alpr("eu", "/home/pi/lukelian/plate_recognition_CZTech/openalpr.conf",
+        alpr = Alpr("us", "/home/pi/lukelian/plate_recognition_CZTech/openalpr.conf",
                     "/home/pi/lukelian/plate_recognition_CZTech/runtime_data")
         if not alpr.is_loaded():
             print("Error loading OpenALPR")
             sys.exit(1)
 
         alpr.set_top_n(20)
-        alpr.set_default_region("hr")
-        results = alpr.recognize_file("alpr.jpg")
+        alpr.set_default_region("md")
+        results = alpr.recognize_file("us-1.jpg")
         i = 0
         for plate in results['results']:
             i += 1
