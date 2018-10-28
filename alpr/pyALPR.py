@@ -55,6 +55,8 @@ class PlateReader:
             for candidate in candidates:
                 if candidate["matches_template"] == 1:
                     ordinal += 1
+                    with open("jieguo.txt", "w") as f:
+                        f.write("Guess {0:d}: {1:s} {2:.2f}%".format(ordinal, candidate["plate"], candidate["confidence"]))
                     print ("Guess {0:d}: {1:s} {2:.2f}%".format(ordinal, candidate["plate"], candidate["confidence"]))
 
 
