@@ -30,7 +30,7 @@ class PlateReader:
             return None, None
 
         try:
-            return json.loads(alpr_out), None
+            return json.loads(alpr_out.decode("utf-8")), None
         except ValueError as e:
             return None, e
 
