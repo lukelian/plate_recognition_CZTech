@@ -1,15 +1,16 @@
 from openalpr import Alpr
 import sys
 
-alpr = Alpr("us", "/home/pi/lukelian/plate_recognition_CZTech/openalpr.conf", "/home/pi/lukelian/plate_recognition_CZTech/runtime_data")
+# alpr = Alpr("us", "/home/pi/lukelian/plate_recognition_CZTech/openalpr.conf", "/home/pi/lukelian/plate_recognition_CZTech/runtime_data")
+alpr = Alpr("cn", "/Users/lukelian/PycharmProjects/plate_recognition_CZTech/openalpr.conf", "/Users/lukelian/PycharmProjects/plate_recognition_CZTech/runtime_data")
 if not alpr.is_loaded():
     print("Error loading OpenALPR")
     sys.exit(1)
 
 alpr.set_top_n(20)
-alpr.set_default_region("md")
+#alpr.set_default_region("md")
 
-results = alpr.recognize_file("us-1.jpg")
+results = alpr.recognize_file("alpr.jpg")
 
 i = 0
 for plate in results['results']:
