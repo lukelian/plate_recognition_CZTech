@@ -76,7 +76,7 @@ class PlateReader:
                 # print ("Guess {0:d}: {1:s} {2:.2f}%".format(ordinal, candidate["plate"], candidate["confidence"]))
 
     def read_plate_py(self, picname):
-        self.webcam_subprocess().communicate()
+        # self.webcam_subprocess().communicate()
         self.alpr.set_top_n(20)
         self.alpr.set_default_region("md")
         results = self.alpr.recognize_file(picname)
